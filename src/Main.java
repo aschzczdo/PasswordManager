@@ -20,9 +20,9 @@ public class Main {
             if (connection != null) {
                 System.out.println("\033[32m" + "Connection to the DB successfull!" + "\033[0m");
                 if(login.authentication(username,password)){
-                    System.out.println("Welcome " + username);
+                    System.out.println("Welcome " + username + " your password is: " + password);
                 }else{
-                    System.out.println("Invalid username or password");
+                    System.out.println("Invalid");
                 }
             } else {
                 System.out.println("Failed to establish a connection to the database.");
