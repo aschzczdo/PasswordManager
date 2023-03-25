@@ -5,20 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="860ed999-25b9-4fae-b3a4-d61c65a42ff6" name="Changes" comment="First Commit">
-      <change afterPath="$PROJECT_DIR$/src/AES/Decrypt.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AES/Encrypt.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AES/SecretKey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PasswordManager.iml" beforeDir="false" afterPath="$PROJECT_DIR$/PasswordManager.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Credentials/Credentials.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Credentials/Credentials.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/DatabaseConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/UserDbConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/UserDbConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,8 +75,6 @@
       <workItem from="1678887567096" duration="2430000" />
       <workItem from="1678890032391" duration="5241000" />
       <workItem from="1678895748445" duration="589000" />
-      <workItem from="1678977816166" duration="1910000" />
-      <workItem from="1679759910671" duration="894000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <created>1678889492167</created>
