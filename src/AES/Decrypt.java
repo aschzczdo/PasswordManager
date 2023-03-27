@@ -4,15 +4,16 @@ import user.User;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
+import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
 public class Decrypt {
-    public String Decrypt(String decrypt){
+    public static String Decrypt(String decrypt){
         User user = new User();
         String password = user.getPassword();
-        //final byte[] SALT = "YourStaticSaltHere".getBytes(StandardCharsets.UTF_8);-->Testing if method works
+        final byte[] SALT = "YourStaticSaltHere".getBytes(StandardCharsets.UTF_8);//-->Testing if method works
         try{
-            SecretKeySpec secretKeySpec = SecretKey.createSecretKeySpec(password,SecretKey.generateSalt()); //Creating SecreteKeySpec object. IMPORTANT! STORE THE salt in DB
+            SecretKeySpec secretKeySpec = SecretKey.createSecretKeySpec(password,SALT); //Creating SecreteKeySpec object. IMPORTANT! STORE THE salt in DB
             Cipher cipher = Cipher.getInstance("AES");
             cipher.init(Cipher.DECRYPT_MODE,secretKeySpec);//Initializing Cipher object with 2 params (Encrypt mode, SecretKey)
             //Doing encrypt to byte level

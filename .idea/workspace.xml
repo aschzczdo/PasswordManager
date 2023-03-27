@@ -4,10 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="860ed999-25b9-4fae-b3a4-d61c65a42ff6" name="Changes" comment="First Commit">
+    <list default="true" id="d025baa9-f528-4852-8703-cd9f5c846667" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/user/Register.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AES/Decrypt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AES/Decrypt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AES/Encrypt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AES/Encrypt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AES/SecretKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AES/SecretKey.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/user/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/user/UserDbConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/UserDbConnection.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,13 +67,14 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="860ed999-25b9-4fae-b3a4-d61c65a42ff6" name="Changes" comment="" />
+      <changelist id="d025baa9-f528-4852-8703-cd9f5c846667" name="Changes" comment="" />
       <created>1678887565856</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -75,6 +82,7 @@
       <workItem from="1678887567096" duration="2430000" />
       <workItem from="1678890032391" duration="5241000" />
       <workItem from="1678895748445" duration="589000" />
+      <workItem from="1679920518477" duration="4405000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <created>1678889492167</created>

@@ -1,34 +1,62 @@
 package user;
 
-
+import AES.Encrypt;
+import AES.SecretKey;
 import database.DatabaseConnection;
-
+import javax.crypto.spec.SecretKeySpec;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Scanner;
 
 public class Login {
-    //Método para autenticar al usuario. Verificamos que el usuario y contraseña coinciden en nuestra BD
-    public boolean authentication(String username, String password) {
-        //Consulta que dado un usuario y contraseña, devuelve los datos del usuario.
-        String query = "SELECT * FROM USERS WHERE username = ? AND password = ?";
-        //Try catch para la establecer conexión con la base de datos.
+
+        public static User loginForm() {
+            Scanner sc = new Scanner(System.in);
+            String username, password;
+
+            System.out.println("Type your username:");
+            username = sc.next();
+            System.out.println("Type your password:");
+            password = sc.next();
+
+            User user = new User();
+            user.setUsername(username);
+            user.setPassword(password);
+            return user;
+        }
+
+    public static boolean loginDB(User user) {
+        String query = "SELECT * FROM USERS WHERE username=?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement statement = conn.prepareStatement(query)) {
 
-            statement.setString(1, username); //Sustituimos el primer "?" de la query por la variable username
-            statement.setString(2, password); //Sustituimos el segundo "?" de la query por la variable password
-            try (ResultSet resultset = statement.executeQuery()) { //try catch para la gestión de excepciones.
-                if (resultset.next()) {
-                    System.out.println("\033[32m" + "Logged in: " + username + "\033[0m");//Texto en verde
-                    return true;
-                }
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException("Error finding user by username and password", e); //Recogemos la excepción en caso de que la consulta este vacia.
-        }
-        return false;
-    }
+            statement.setString(1, user.getUsername());
+            ResultSet resultSet = statement.executeQuery();
 
+            if (!resultSet.next()) {
+                System.out.println("User not found.");
+                return false;
+            }
+
+            String encryptedPassword = resultSet.getString("password");
+            byte[] salt = resultSet.getBytes("salt");
+            SecretKeySpec secretKeySpec = SecretKey.createSecretKeySpec(user.getPassword(), salt);
+            String enteredPassword = Encrypt.encryptPassword(user.getPassword(), secretKeySpec);
+
+            if (!encryptedPassword.equals(enteredPassword)) {
+                System.out.println("Incorrect password.");
+                return false;
+            }
+
+            System.out.println("\033[32m" + "Login successful: " + user.getUsername() + "\033[0m");
+            return true;
+
+        } catch (SQLException e) {
+            System.out.println("Error logging in user.");
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

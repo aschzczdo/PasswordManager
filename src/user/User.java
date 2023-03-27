@@ -1,5 +1,9 @@
 package user;
 
+import AES.SecretKey;
+
+import java.nio.charset.StandardCharsets;
+
 //Clase que almacena todos los datos de cada usuario.
 public class User {
     //Atributos de la clase User
@@ -8,33 +12,22 @@ public class User {
     private String email;
     private String password;
     private String phoneNumber;
+    private byte[] salt;
 
     // Constructores
     //Constructor sin parámetros
     public User (){
 
     }
-    public User(String username, String password, String email, String phoneNumber) {
-
-    }
-
-    public User(int user_id, String username, String email, String password, String phoneNumber) {
+    public User(String username, String password, String email, String phoneNumber,byte[] salt) {
         this.user_id = user_id;
         this.username = username;
         this.email = email;
         this.password = password;
         this.phoneNumber = phoneNumber;
+        this.salt = salt;
     }
-
-    public User(int user_id, String username, String email, String password) {
-        this.user_id = user_id;
-        this.username = username;
-        this.email = email;
-        this.password = password;
-    }
-
-    public User(int user_id, String username, String password) {
-        this.user_id = user_id;
+    public User (String username, String password){
         this.username = username;
         this.password = password;
     }
@@ -83,6 +76,14 @@ public class User {
     public String getPhoneNumber() {
 
         return phoneNumber;
+    }
+
+    public byte[] getSalt() {
+        return salt;
+    }
+
+    public void setSalt(byte[] salt) {
+        this.salt = salt;
     }
 
     public void setPhoneNumber(String phoneNumber) {
