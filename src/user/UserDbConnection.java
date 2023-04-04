@@ -5,6 +5,7 @@ import AES.SecretKey;
 import database.DatabaseConnection;
 
 import javax.crypto.spec.SecretKeySpec;
+import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -38,6 +39,7 @@ public class UserDbConnection {
         }
         return user;
     }
+
     public User findByUsernameAndPassword(String username, String password) {
         String query = "SELECT * FROM USERS WHERE username = ? AND password = ?";
         User user = null;
@@ -64,44 +66,50 @@ public class UserDbConnection {
         }
         return user;
     }
-    public boolean modifyPasswordDB() {
+
+    public boolean updatePassword(User user) {
         Scanner sc = new Scanner(System.in);
+        System.out.println("Enter your new password:");
+        String newPassword = sc.next();
+        System.out.println("Confirm your new password:");
+        String confirmPassword = sc.next();
 
-        System.out.println("Enter your username");
-        String username = sc.nextLine();
-        System.out.println("Enter your password");
-        String password = sc.nextLine();
-        System.out.println("Enter your new password");
-        String newpassword = sc.nextLine();
-        System.out.println("Confirm your new password");
-        String confirmpassword = sc.nextLine();
-
-        User currentuser = findByUsernameAndPassword(username, password);
-
-        if (currentuser != null) {
-            String query = "UPDATE USERS SET password = ? WHERE user_id = ?";
-
-            try (Connection conn = database.DatabaseConnection.getConnection()) {
-                PreparedStatement statement = conn.prepareStatement(query);
-
-                statement.setString(1, newpassword);
-                statement.setInt(2, currentuser.getId());
-
-                int affectedcolumns = statement.executeUpdate();//ejecuta la consulta
-                if (affectedcolumns > 0) { //si hay alguna columna afectada:
-                    System.out.println("Password changed succesfully!");
-                    return true;
-                } else { //sino hay columnas afectadas
-                    System.out.println("Invalid data. Please try again");
-                }
-            } catch (SQLException e) { //si hay una excepción SQL en la ejecución del código:
-                throw new RuntimeException("Error updating your credentials", e);
-            }
-        }else{ //si el currentuser == null:
-            System.out.println("Invalid username or password"); //Este
+        if (!newPassword.equals(confirmPassword)) {
+            System.out.println("Passwords do not match. Please try again.");
+            return false;
         }
-        return false;
+
+        // Generate a new salt for the user
+        byte[] newSalt = SecretKey.generateSalt();
+
+        // Encrypt the new password using the new salt
+        SecretKeySpec secretKeySpec = SecretKey.createSecretKeySpec(newPassword, newSalt);
+        String encryptedNewPassword = Encrypt.encryptPassword(newPassword, secretKeySpec);
+
+        // Prepare the SQL query to update the password and salt in the database
+        String query = "UPDATE USERS SET password=?, salt=? WHERE username=?";
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement statement = conn.prepareStatement(query)) {
+
+            // Set the values for the prepared statement
+            statement.setString(1, encryptedNewPassword);
+            statement.setBytes(2, newSalt);
+            statement.setString(3, user.getUsername());
+
+            // Execute the update query
+            int affectedRows = statement.executeUpdate();
+
+            if (affectedRows > 0) {
+                System.out.println("\033[32m" + "Password updated for user: " + user.getUsername() + "\033[0m");
+                return true;
+            } else {
+                System.out.println("Error trying to update the password. Please try again.");
+                return false;
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error updating password", e);
+        }
     }
-
-
 }

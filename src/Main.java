@@ -1,20 +1,12 @@
-import AES.Decrypt;
-import AES.Encrypt;
-import AES.SecretKey;
-import database.DatabaseConnection;
-import user.Login;
-import user.Register;
-import user.User;
-import user.UserDbConnection;
-
-import javax.crypto.spec.SecretKeySpec;
-import java.sql.Connection;
-import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-        int opcion;
+        ui.LoginUI.main(args);
+    }
+}
+
+        /*int opcion;
         Scanner sc = new Scanner(System.in);
         String username;
         String password;
@@ -24,6 +16,7 @@ public class Main {
                 System.out.println("\033[32m" + "Connection to the DB successfull!" + "\033[0m");
                 System.out.println("Pres 1 to register");
                 System.out.println("Press 2 to login");
+                System.out.println("Press 3 to modify your password");
                 opcion = sc.nextInt();
                 switch (opcion){
                     case 1:
@@ -34,6 +27,12 @@ public class Main {
                         user = Login.loginForm();
                         Login.loginDB(user);
                         break;
+                    case 3:
+                        user = Login.loginForm();
+                        Login.loginDB(user);
+                        UserDbConnection userDbConnection = new UserDbConnection();
+                        userDbConnection.updatePassword(user);
+
 
                 }
             } else {
@@ -43,6 +42,4 @@ public class Main {
         } catch (Exception e) {
             System.out.println("Error occurred while connecting to the database:");
             e.printStackTrace();
-        }
-    }
-}
+        }*/

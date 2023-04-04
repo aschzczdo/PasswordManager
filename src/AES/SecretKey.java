@@ -8,7 +8,7 @@ import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
 
-public class SecretKey {
+public final class SecretKey {
     public static SecretKeySpec createSecretKeySpec(String password, byte[] salt) {
         try {
             int iterationCount = 65536;

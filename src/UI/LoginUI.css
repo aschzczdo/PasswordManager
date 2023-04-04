@@ -1,0 +1,15 @@
+/* LoginUI.css */
+.root {
+    -fx-font-family: "Helvetica";
+    -fx-base: #ffffff;
+}
+
+.button {
+    -fx-background-color: linear-gradient(#42a1f4, #0077c8);
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(#0077c8, #42a1f4);
+}

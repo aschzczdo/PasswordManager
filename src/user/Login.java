@@ -11,28 +11,12 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Login {
-
-        public static User loginForm() {
-            Scanner sc = new Scanner(System.in);
-            String username, password;
-
-            System.out.println("Type your username:");
-            username = sc.next();
-            System.out.println("Type your password:");
-            password = sc.next();
-
-            User user = new User();
-            user.setUsername(username);
-            user.setPassword(password);
-            return user;
-        }
-
-    public static boolean loginDB(User user) {
+    public static boolean loginDB(String username, String password) {
         String query = "SELECT * FROM USERS WHERE username=?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement statement = conn.prepareStatement(query)) {
 
-            statement.setString(1, user.getUsername());
+            statement.setString(1, username);
             ResultSet resultSet = statement.executeQuery();
 
             if (!resultSet.next()) {
@@ -42,15 +26,15 @@ public class Login {
 
             String encryptedPassword = resultSet.getString("password");
             byte[] salt = resultSet.getBytes("salt");
-            SecretKeySpec secretKeySpec = SecretKey.createSecretKeySpec(user.getPassword(), salt);
-            String enteredPassword = Encrypt.encryptPassword(user.getPassword(), secretKeySpec);
+            SecretKeySpec secretKeySpec = SecretKey.createSecretKeySpec(password, salt);
+            String enteredPassword = Encrypt.encryptPassword(password, secretKeySpec);
 
             if (!encryptedPassword.equals(enteredPassword)) {
                 System.out.println("Incorrect password.");
                 return false;
             }
 
-            System.out.println("\033[32m" + "Login successful: " + user.getUsername() + "\033[0m");
+            System.out.println("\033[32m" + "Login successful: " + username + "\033[0m");
             return true;
 
         } catch (SQLException e) {
