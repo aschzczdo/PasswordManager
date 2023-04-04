@@ -1,12 +1,13 @@
 package database;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/passwordmanager";
-    private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "0143";
+    private static final String DB_URL = System.getenv("PASSWORD_MANAGER_DB_URL");
+    private static final String DB_USER = System.getenv("PASSWORD_MANAGER_DB_USER");
+    private static final String DB_PASSWORD = System.getenv("PASSWORD_MANAGER_DB_PASSWORD");
 
     public static Connection getConnection() {
         try {

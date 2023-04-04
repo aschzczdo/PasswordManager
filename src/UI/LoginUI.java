@@ -1,4 +1,4 @@
-package ui;
+package UI;
 
 import UI.RegisterUI;
 import javafx.application.Application;
@@ -56,11 +56,18 @@ public class LoginUI extends Application {
         String password = passwordField.getText();
         if (Login.loginDB(username, password)) {
             // Login successful, switch to the password dashboard.
-            // TODO: Implement the password dashboard.
+            ui.PasswordDashboard dashboard = new ui.PasswordDashboard();
+            try {
+                dashboard.start(new Stage());
+                ((Stage) usernameField.getScene().getWindow()).close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         } else {
             statusLabel.setText("Login failed. Please check your credentials.");
         }
     }
+
 
     private void handleRegister(Stage primaryStage) {
         RegisterUI registerUI = new RegisterUI();

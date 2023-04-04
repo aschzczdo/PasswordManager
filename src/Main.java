@@ -2,7 +2,7 @@
 public class Main {
 
     public static void main(String[] args) {
-        ui.LoginUI.main(args);
+        UI.LoginUI.main(args);
     }
 }
 
