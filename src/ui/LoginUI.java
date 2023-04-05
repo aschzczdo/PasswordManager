@@ -1,6 +1,5 @@
-package UI;
+package ui;
 
-import UI.RegisterUI;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -10,6 +9,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import user.Login;
+import user.User;
 
 public class LoginUI extends Application {
 
@@ -54,9 +54,11 @@ public class LoginUI extends Application {
     private void handleLogin() {
         String username = usernameField.getText();
         String password = passwordField.getText();
-        if (Login.loginDB(username, password)) {
+        User user = Login.loginDB(username, password);
+
+        if (user != null) {
             // Login successful, switch to the password dashboard.
-            ui.PasswordDashboard dashboard = new ui.PasswordDashboard();
+            PasswordManagerDashboard dashboard = new PasswordManagerDashboard(user);
             try {
                 dashboard.start(new Stage());
                 ((Stage) usernameField.getScene().getWindow()).close();

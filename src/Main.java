@@ -1,8 +1,7 @@
-
 public class Main {
 
     public static void main(String[] args) {
-        UI.LoginUI.main(args);
+        ui.LoginUI.main(args);
     }
 }
 
@@ -32,8 +31,6 @@ public class Main {
                         Login.loginDB(user);
                         UserDbConnection userDbConnection = new UserDbConnection();
                         userDbConnection.updatePassword(user);
-
-
                 }
             } else {
                 System.out.println("Failed to establish a connection to the database.");

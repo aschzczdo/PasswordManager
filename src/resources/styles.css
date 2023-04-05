@@ -1,0 +1,36 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url('/resources/fonts/Roboto-Regular.ttf');
+}
+
+/* Overall styles */
+.root {
+    -fx-background-color: #2C3E50; /* Change to a dark blue background */
+}
+
+/* Button styles */
+.button {
+    -fx-background-color: #3498DB; /* Change to a blue background */
+    -fx-text-fill: #FFFFFF; /* White text color */
+    -fx-font-size: 16px;
+    -fx-pref-width: 150px;
+    -fx-pref-height: 50px;
+    -fx-padding: 10px;
+    -fx-border-color: #2980B9; /* Adjust the border color if needed */
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-font-family: 'Roboto';
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+}
+
+.button:hover {
+    -fx-background-color: #2980B9; /* Adjust the hover background color if needed */
+    -fx-border-color: #FFFFFF; /* Adjust the border color on hover if needed */
+}
+
+/* VBox styles */
+.vbox {
+    -fx-spacing: 20px;
+    -fx-padding: 40px;
+    -fx-alignment: center;
+}

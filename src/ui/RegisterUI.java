@@ -1,4 +1,4 @@
-package UI;
+package ui;
 
 import AES.SecretKey;
 import javafx.application.Application;
@@ -71,7 +71,7 @@ public class RegisterUI extends Application {
     private void handleLogin() {
         String username = usernameField.getText();
         String password = passwordField.getText();
-        if (Login.loginDB(username, password)) {
+        if (Login.loginDB(username, password) != null) {
             // Login successful, switch to the password dashboard.
             // TODO: Implement the password dashboard.
         } else {
