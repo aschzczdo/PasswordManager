@@ -4,21 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d025baa9-f528-4852-8703-cd9f5c846667" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Credentials/CredentialsDB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ui/CredentialsFormUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ui/PasswordManagerDashboard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ui/UserProfile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/LoginUI.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/LoginUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/LoginUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/PasswordDashboard.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/RegisterUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/RegisterUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/User.java" afterDir="false" />
-    </list>
+    <list default="true" id="d025baa9-f528-4852-8703-cd9f5c846667" name="Changes" comment="Secured credentials" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -155,6 +141,7 @@
       <workItem from="1680646862738" duration="1859000" />
       <workItem from="1680674911518" duration="4881000" />
       <workItem from="1680699224665" duration="8024000" />
+      <workItem from="1681073719444" duration="26000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <created>1678889492167</created>
