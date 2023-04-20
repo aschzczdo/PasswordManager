@@ -7,7 +7,7 @@ import javax.crypto.spec.SecretKeySpec;
 import java.util.Base64;
 
 public class Encrypt {
-    public static String encryptPassword(String password, SecretKeySpec secretKeySpec) {
+    public static String encryptData(String password, SecretKeySpec secretKeySpec) {
         try {
             Cipher cipher = Cipher.getInstance("AES");
             cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec);

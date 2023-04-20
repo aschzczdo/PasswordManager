@@ -5,19 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d025baa9-f528-4852-8703-cd9f5c846667" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Credentials/CredentialsDB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ui/CredentialsFormUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ui/PasswordManagerDashboard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ui/UserProfile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/user/TestEncryptionDecryption.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AES/Decrypt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AES/Decrypt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AES/Encrypt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AES/Encrypt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Credentials/CredentialsDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Credentials/CredentialsDB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/LoginUI.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/LoginUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/LoginUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/PasswordDashboard.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/RegisterUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/RegisterUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/CredentialsFormUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/CredentialsFormUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/LoginUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/LoginUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/PasswordManagerDashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/PasswordManagerDashboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/RegisterUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/RegisterUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/UserProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/UserProfileUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/user/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/user/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/Register.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/user/UserDbConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/UserDbConnection.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +124,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestEncryptionDecryption" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="user.TestEncryptionDecryption" />
+      <module name="PasswordManager" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="user.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
+      <item itemvalue="Application.TestEncryptionDecryption" />
       <item itemvalue="Application.RegisterUI" />
       <item itemvalue="Application.LoginUI" />
       <item itemvalue="Application.Main" />
@@ -132,6 +148,7 @@
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.RegisterUI" />
         <item itemvalue="Application.LoginUI" />
+        <item itemvalue="Application.TestEncryptionDecryption" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -154,7 +171,22 @@
       <workItem from="1680640518880" duration="5262000" />
       <workItem from="1680646862738" duration="1859000" />
       <workItem from="1680674911518" duration="4881000" />
-      <workItem from="1680699224665" duration="8024000" />
+      <workItem from="1680699224665" duration="8342000" />
+      <workItem from="1680709028969" duration="605000" />
+      <workItem from="1680810917791" duration="694000" />
+      <workItem from="1680817744805" duration="2815000" />
+      <workItem from="1681071415057" duration="12330000" />
+      <workItem from="1681089548455" duration="655000" />
+      <workItem from="1681136567749" duration="7798000" />
+      <workItem from="1681145732271" duration="126000" />
+      <workItem from="1681145956913" duration="36000" />
+      <workItem from="1681471519222" duration="207000" />
+      <workItem from="1681475435647" duration="59000" />
+      <workItem from="1681764261188" duration="194000" />
+      <workItem from="1681818156368" duration="1303000" />
+      <workItem from="1681822014582" duration="492000" />
+      <workItem from="1681825393910" duration="120000" />
+      <workItem from="1681992510767" duration="6176000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <created>1678889492167</created>
@@ -184,7 +216,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680647897729</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="-Add Credentials Feature &amp; Dashboard">
+      <created>1680707906469</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1680707906469</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,6 +234,7 @@
     <MESSAGE value="Added encryption with AES algorithm.&#10;&#10;Fixed login with encryption.&#10;Added register method&#10;Added salt on database &#10;Added SecretKey Method&#10;Added Encrypt&#10;Added Decrypt" />
     <MESSAGE value="Starting developing UI" />
     <MESSAGE value="Secured credentials" />
-    <option name="LAST_COMMIT_MESSAGE" value="Secured credentials" />
+    <MESSAGE value="-Add Credentials Feature &amp; Dashboard" />
+    <option name="LAST_COMMIT_MESSAGE" value="-Add Credentials Feature &amp; Dashboard" />
   </component>
 </project>

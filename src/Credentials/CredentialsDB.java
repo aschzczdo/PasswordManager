@@ -3,14 +3,10 @@ package Credentials;
 import AES.Encrypt;
 import AES.SecretKey;
 import database.DatabaseConnection;
-import user.Login;
 import user.User;
 
 import javax.crypto.spec.SecretKeySpec;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
 public class CredentialsDB {
     public CredentialsDB(){
@@ -22,10 +18,10 @@ public class CredentialsDB {
              PreparedStatement statement = connection.prepareStatement(query)) {
 
             // Encrypt the credentials before saving
-            SecretKeySpec secretKeySpec = SecretKey.createSecretKeySpec(user.getPassword(), user.getSalt());
-            String encryptedUsername = Encrypt.encryptPassword(username, secretKeySpec);
-            String encryptedEmail = Encrypt.encryptPassword(email, secretKeySpec);
-            String encryptedPassword = Encrypt.encryptPassword(password, secretKeySpec);
+            SecretKeySpec secretKeySpec = SecretKey.createSecretKeySpec(password, user.getSalt());
+            String encryptedUsername = Encrypt.encryptData(username, secretKeySpec);
+            String encryptedEmail = Encrypt.encryptData(email, secretKeySpec);
+            String encryptedPassword = Encrypt.encryptData(password, secretKeySpec);
 
             statement.setInt(1, userId);
             statement.setString(2, websiteUrl);

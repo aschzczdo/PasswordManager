@@ -24,8 +24,8 @@ public class Register {
         return true;
     }
 
-    public static boolean registerUserDB(String username, String password, String email,
-                                         String phoneNumber, byte[] salt) {
+    public static User registerUserDB(String username, String password, String email,
+                                      String phoneNumber, byte[] salt) {
         String query = "SELECT * FROM USERS WHERE username=?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement statement = conn.prepareStatement(query)) {
@@ -35,12 +35,12 @@ public class Register {
 
             if (resultSet.next()) {
                 System.out.println("User already exists.");
-                return false;
+                return null;
             }
         } catch (SQLException e) {
             System.out.println("Error checking for existing user.");
             e.printStackTrace();
-            return false;
+            return null;
         }
 
         query = "INSERT INTO USERS (username, password, email, phonenumber, salt) VALUES (?, ?, ?, ?, ?)";
@@ -49,27 +49,32 @@ public class Register {
              PreparedStatement statement = conn.prepareStatement(query)) {
 
             SecretKeySpec secretKeySpec = SecretKey.createSecretKeySpec(password, salt);
-            String encryptedPassword = Encrypt.encryptPassword(password, secretKeySpec);
+            String encryptedPassword = Encrypt.encryptData(password, secretKeySpec);
+            String encryptedEmail = Encrypt.encryptData(email, secretKeySpec);
+            String encryptedPhoneNumber = Encrypt.encryptData(phoneNumber, secretKeySpec);
 
             statement.setString(1, username);
             statement.setString(2, encryptedPassword);
-            statement.setString(3, email);
-            statement.setString(4, phoneNumber);
+            statement.setString(3, encryptedEmail);
+            statement.setString(4, encryptedPhoneNumber);
             statement.setBytes(5, salt);
 
             int affectedRows = statement.executeUpdate();
 
             if (affectedRows > 0) {
                 System.out.println("\033[32m" + "User registered: " + username + "\033[0m");
-                return true;
+
+                // After successfully registering the user, retrieve the user object and return it
+                return UserDbConnection.findByUsername(username);
             } else {
                 System.out.println("Error trying to register. Please try again.");
-                return false;
+                return null;
             }
         } catch (SQLException e) {
             System.out.println("Error registering user.");
             e.printStackTrace();
-            return false;
+            return null;
         }
     }
+
 }

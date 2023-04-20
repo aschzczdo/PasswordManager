@@ -2,6 +2,7 @@ package ui;
 
 import AES.SecretKey;
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -9,6 +10,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import user.Login;
 import user.Register;
 
@@ -50,17 +52,28 @@ public class RegisterUI extends Application {
         gridPane.add(phoneNumberField, 1, 5);
 
         Button loginButton = new Button("Login");
+        loginButton.getStyleClass().add("login-button");
         Button registerButton = new Button("Register");
+        registerButton.getStyleClass().add("register-button");
         HBox hBox = new HBox(10);
         hBox.getChildren().addAll(loginButton, registerButton);
         hBox.setAlignment(Pos.CENTER);
 
         VBox vBox = new VBox(10);
+        vBox.getStyleClass().add("vbox");
         vBox.getChildren().addAll(gridPane, hBox, statusLabel);
         vBox.setAlignment(Pos.CENTER);
 
+        Button closeButton = new Button("X");
+        closeButton.getStyleClass().add("close-button");
+        closeButton.setOnAction(e -> primaryStage.close());
+        VBox.setMargin(closeButton, new Insets(0, 0, 0, 330));
+        vBox.getChildren().add(closeButton);
+
         Scene scene = new Scene(vBox, 350, 400);
-        primaryStage.setTitle("Login/Register Form");
+        scene.getStylesheets().add("resources/styles.css");
+        primaryStage.initStyle(StageStyle.UNDECORATED);
+        primaryStage.setTitle("Register Form");
         primaryStage.setScene(scene);
         primaryStage.show();
 
@@ -89,7 +102,7 @@ public class RegisterUI extends Application {
 
         if (Register.registerForm(username, password, confirmPassword, email, confirmEmail, phoneNumber)) {
             byte[] salt = SecretKey.generateSalt();
-            if (Register.registerUserDB(username, password, email, phoneNumber, salt)) {
+            if (Register.registerUserDB(username, password, email, phoneNumber, salt) != null) {
                 statusLabel.setText("User registered successfully.");
                 // Optionally, you can redirect the user to the password dashboard here.
                 // TODO: Implement the password dashboard.
@@ -101,4 +114,3 @@ public class RegisterUI extends Application {
         }
     }
 }
-

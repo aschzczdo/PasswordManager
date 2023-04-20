@@ -13,7 +13,6 @@ public class CredentialsFormUI {
     public static VBox credentialsForm(User user) {
         VBox form = new VBox(10);
         form.setPadding(new Insets(10));
-
         TextField websiteUrlField = new TextField();
         websiteUrlField.setPromptText("Website URL");
         TextField websiteNameField = new TextField();

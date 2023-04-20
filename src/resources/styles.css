@@ -1,36 +1,30 @@
-@font-face {
-    font-family: 'Roboto';
-    src: url('/resources/fonts/Roboto-Regular.ttf');
+.grid-pane {
+    -fx-padding: 20;
 }
 
-/* Overall styles */
-.root {
-    -fx-background-color: #2C3E50; /* Change to a dark blue background */
+.status-label {
+    -fx-text-fill: red;
 }
 
-/* Button styles */
-.button {
-    -fx-background-color: #3498DB; /* Change to a blue background */
-    -fx-text-fill: #FFFFFF; /* White text color */
-    -fx-font-size: 16px;
-    -fx-pref-width: 150px;
-    -fx-pref-height: 50px;
-    -fx-padding: 10px;
-    -fx-border-color: #2980B9; /* Adjust the border color if needed */
-    -fx-border-width: 2px;
-    -fx-border-radius: 5px;
-    -fx-font-family: 'Roboto';
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+.login-button {
+    -fx-background-color: #90be6d;
+    -fx-text-fill: white;
 }
 
-.button:hover {
-    -fx-background-color: #2980B9; /* Adjust the hover background color if needed */
-    -fx-border-color: #FFFFFF; /* Adjust the border color on hover if needed */
+.register-button {
+    -fx-background-color: #43aa8b;
+    -fx-text-fill: white;
 }
 
-/* VBox styles */
 .vbox {
-    -fx-spacing: 20px;
-    -fx-padding: 40px;
-    -fx-alignment: center;
+    -fx-background-color: linear-gradient( to right top,#fc76b3, #ffbf69);
+    -fx-padding: 20;
 }
+.close-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+

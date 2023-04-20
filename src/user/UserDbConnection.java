@@ -5,7 +5,6 @@ import AES.SecretKey;
 import database.DatabaseConnection;
 
 import javax.crypto.spec.SecretKeySpec;
-import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,7 +14,7 @@ import java.util.Scanner;
 //All function that requires user connection with DB
 public class UserDbConnection {
     //Método para buscar a un usuario dado un username y una password en la BD.
-    public User findByUsername(String username) {
+    public static User findByUsername(String username) {
         String query = "SELECT * FROM USERS WHERE username = ?";
         User user = null;
 
@@ -32,6 +31,8 @@ public class UserDbConnection {
                     user.setPassword(resultset.getString("password"));
                     user.setEmail(resultset.getString("email"));
                     user.setPhoneNumber(resultset.getString("phonenumber"));
+                    user.setSalt(resultset.getBytes("salt"));
+
                 }
             }
         } catch (SQLException e) {
@@ -39,32 +40,23 @@ public class UserDbConnection {
         }
         return user;
     }
+    public static User authenticateUser(String username, String password) {
+        User user = findByUsername(username);
 
-    public User findByUsernameAndPassword(String username, String password) {
-        String query = "SELECT * FROM USERS WHERE username = ? AND password = ?";
-        User user = null;
+        if (user != null) {
+            // Generate a SecretKeySpec object using the user's salt and the provided password
+            SecretKeySpec secretKeySpec = SecretKey.createSecretKeySpec(password, user.getSalt());
 
-        try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement statement = conn.prepareStatement(query)) {
+            // Encrypt the provided password using the secretKeySpec
+            String encryptedPassword = Encrypt.encryptData(password, secretKeySpec);
 
-            statement.setString(1, username);
-            statement.setString(2, password);
-
-            try (ResultSet rs = statement.executeQuery()) {
-                if (rs.next()) {
-                    user = new User();
-                    user.setId(rs.getInt("user_id"));
-                    user.setUsername(rs.getString("username"));
-                    user.setPassword(rs.getString("password"));
-                    user.setEmail(rs.getString("email"));
-                    user.setPhoneNumber(rs.getString("phonenumber"));
-                    user.setSalt(rs.getBytes("salt"));
-                }
+            // Compare the encrypted password with the one stored in the database
+            if (user.getPassword().equals(encryptedPassword)) {
+                return user; // Authentication successful
             }
-        } catch (SQLException e) {
-            throw new RuntimeException("Error finding user by username and password", e);
         }
-        return user;
+
+        return null; // Authentication failed
     }
 
     public boolean updatePassword(User user) {
@@ -84,7 +76,7 @@ public class UserDbConnection {
 
         // Encrypt the new password using the new salt
         SecretKeySpec secretKeySpec = SecretKey.createSecretKeySpec(newPassword, newSalt);
-        String encryptedNewPassword = Encrypt.encryptPassword(newPassword, secretKeySpec);
+        String encryptedNewPassword = Encrypt.encryptData(newPassword, secretKeySpec);
 
         // Prepare the SQL query to update the password and salt in the database
         String query = "UPDATE USERS SET password=?, salt=? WHERE username=?";

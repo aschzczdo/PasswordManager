@@ -3,26 +3,26 @@ package AES;
 import user.User;
 
 import javax.crypto.Cipher;
+import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
 public class Decrypt {
-    public static String Decrypt(String decrypt){
-        User user = new User();
-        String password = user.getPassword();
-        final byte[] SALT = "YourStaticSaltHere".getBytes(StandardCharsets.UTF_8);//-->Testing if method works
-        try{
-            SecretKeySpec secretKeySpec = SecretKey.createSecretKeySpec(password,SALT); //Creating SecreteKeySpec object. IMPORTANT! STORE THE salt in DB
+    public static String decryptData(String data, SecretKeySpec secretKeySpec) {
+        try {
             Cipher cipher = Cipher.getInstance("AES");
-            cipher.init(Cipher.DECRYPT_MODE,secretKeySpec);//Initializing Cipher object with 2 params (Encrypt mode, SecretKey)
-            //Doing encrypt to byte level
-            byte [] chain  =    Base64.getDecoder().decode(decrypt);
-            byte[] decrypted = cipher.doFinal(chain); //Encrypting bytes
-            //Transforming encrypted bytes to an Stringed (keeps encrypted but legible)
-            String decryptedString = new String (decrypted); //Getting bytes to Base64
+            cipher.init(Cipher.DECRYPT_MODE, secretKeySpec); // Initializing Cipher object with 2 params (Decrypt mode, SecretKey)
+
+            // Decoding the Base64-encoded string
+            byte[] chain = Base64.getDecoder().decode(data);
+            byte[] decrypted = cipher.doFinal(chain); // Decrypting bytes
+
+            // Transforming decrypted bytes to a String
+            String decryptedString = new String(decrypted, StandardCharsets.UTF_8);
             return decryptedString;
-        }catch(Exception e){
+        } catch (Exception e) {
+            e.printStackTrace();
             return null;
         }
     }
