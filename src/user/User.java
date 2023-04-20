@@ -1,9 +1,5 @@
 package user;
 
-import AES.SecretKey;
-
-import java.nio.charset.StandardCharsets;
-
 //Clase que almacena todos los datos de cada usuario.
 public class User {
     //Atributos de la clase User
