@@ -8,6 +8,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import user.User;
+import user.UserDbConnection;
 
 public class PasswordManagerDashboard extends Application {
     private User user;
@@ -41,14 +42,19 @@ public class PasswordManagerDashboard extends Application {
         Scene scene = new Scene(root, 800, 600);
         scene.getStylesheets().add("resources/styles.css");
 
-        primaryStage.setTitle("Password Manager Dashboard");
+        primaryStage.setTitle("Dashboard");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
     private VBox createUserProfileTab() {
+        String username = user.getUsername();
         VBox userProfileContent = new VBox();
-        // TODO: Add content for the User Profile tab
+        User user = UserDbConnection.findByUsername(username); // Replace this with a method to get the current user
+        // Create the user profile content
+        VBox profileBox = UserProfileUI.userProfile(user);
+
+        userProfileContent.getChildren().add(profileBox);
         return userProfileContent;
     }
 
