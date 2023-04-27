@@ -73,9 +73,9 @@ public class PasswordManagerDashboard extends Application {
     }
 
     private VBox createCredentialsTab() {
-        VBox credentialsContent = new VBox();
-        // TODO: Add content for the Credentials tab
-        return credentialsContent;
+        User loggedinUser = UserDbConnection.findByUsername(user.getUsername());
+        CredentialsUI credentialsUI = new CredentialsUI(loggedinUser, password);
+        return credentialsUI;
     }
 
     private VBox createContactTab() {

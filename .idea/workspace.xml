@@ -5,14 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d025baa9-f528-4852-8703-cd9f5c846667" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/ui/CredentialsUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Credentials/CredentialsDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Credentials/CredentialsDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/LoginUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/LoginUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/CredentialsFormUI.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/PasswordManagerDashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/PasswordManagerDashboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/RegisterUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/RegisterUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/UserProfileUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/UserProfileUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/user/UserDbConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/UserDbConnection.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,10 +20,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
-        <option value="Class" />
         <option value="CSS File" />
         <option value="FxmlFile" />
+        <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -156,10 +153,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.DashboardMain" />
-        <item itemvalue="Application.RegisterUI" />
         <item itemvalue="Application.LoginUI" />
+        <item itemvalue="Application.RegisterUI" />
         <item itemvalue="Application.TestEncryptionDecryption" />
+        <item itemvalue="Application.DashboardMain" />
       </list>
     </recent_temporary>
   </component>
@@ -201,7 +198,7 @@
       <workItem from="1682555743189" duration="310000" />
       <workItem from="1682556162660" duration="109000" />
       <workItem from="1682592772719" duration="3791000" />
-      <workItem from="1682596628007" duration="3344000" />
+      <workItem from="1682596628007" duration="8294000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <created>1678889492167</created>
@@ -252,7 +249,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682002868447</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary=".">
+      <created>1682600128162</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1682600128162</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

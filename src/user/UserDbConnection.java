@@ -103,10 +103,16 @@ public class UserDbConnection {
     public boolean updateEmail(User user, String newEmail) {
         String query = "UPDATE USERS SET email=? WHERE username=?";
 
+        // Generate the SecretKeySpec object using the user's password and salt
+        SecretKeySpec secretKeySpec = SecretKey.createSecretKeySpec(user.getPassword(), user.getSalt());
+
+        // Encrypt the new email using the SecretKeySpec object
+        String encryptedEmail = Encrypt.encryptData(newEmail, secretKeySpec);
+
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement statement = conn.prepareStatement(query)) {
 
-            statement.setString(1, newEmail);
+            statement.setString(1, encryptedEmail);
             statement.setString(2, user.getUsername());
 
             int affectedRows = statement.executeUpdate();
@@ -121,13 +127,20 @@ public class UserDbConnection {
             throw new RuntimeException("Error updating email", e);
         }
     }
+
     public boolean updatePhoneNumber(User user, String newPhoneNumber) {
         String query = "UPDATE USERS SET phonenumber=? WHERE username=?";
+
+        // Generate the SecretKeySpec object using the user's password and salt
+        SecretKeySpec secretKeySpec = SecretKey.createSecretKeySpec(user.getPassword(), user.getSalt());
+
+        // Encrypt the new phone number using the SecretKeySpec object
+        String encryptedPhoneNumber = Encrypt.encryptData(newPhoneNumber, secretKeySpec);
 
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement statement = conn.prepareStatement(query)) {
 
-            statement.setString(1, newPhoneNumber);
+            statement.setString(1, encryptedPhoneNumber);
             statement.setString(2, user.getUsername());
 
             int affectedRows = statement.executeUpdate();
@@ -144,5 +157,6 @@ public class UserDbConnection {
 
         }
     }
+
 
 }

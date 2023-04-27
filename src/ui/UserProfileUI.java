@@ -22,7 +22,7 @@ public class UserProfileUI extends VBox {
         this.loggedInUser = loggedInUser;
         this.plainpassword = plainpassword;
         // Load the CSS file
-        URL cssURL = getClass().getResource("/styles.css");
+        URL cssURL = getClass().getResource("/resources/styles.css");
         if (cssURL != null) {
             getStylesheets().add(cssURL.toExternalForm());
         } else {
