@@ -1,7 +1,9 @@
 package ui;
 
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
@@ -12,14 +14,21 @@ import user.UserDbConnection;
 
 public class PasswordManagerDashboard extends Application {
     private User user;
-
-    public PasswordManagerDashboard(User user) {
+    private String password;
+    public PasswordManagerDashboard(User user, String password) {
         this.user = user;
+        this.password = password;
     }
 
     @Override
     public void start(Stage primaryStage) {
         BorderPane root = new BorderPane();
+
+        // Logout button
+        Button logoutButton = new Button("Logout");
+        logoutButton.setOnAction(e -> handleLogout(primaryStage));
+        root.setBottom(logoutButton);
+        BorderPane.setAlignment(logoutButton, Pos.BOTTOM_RIGHT);
 
         TabPane tabPane = new TabPane();
 
@@ -45,17 +54,22 @@ public class PasswordManagerDashboard extends Application {
         primaryStage.setTitle("Dashboard");
         primaryStage.setScene(scene);
         primaryStage.show();
+
+    }
+    private void handleLogout(Stage primaryStage) {
+        try {
+            LoginUI loginUI = new LoginUI();
+            loginUI.start(new Stage());
+            primaryStage.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private VBox createUserProfileTab() {
-        String username = user.getUsername();
-        VBox userProfileContent = new VBox();
-        User user = UserDbConnection.findByUsername(username); // Replace this with a method to get the current user
-        // Create the user profile content
-        VBox profileBox = UserProfileUI.userProfile(user);
-
-        userProfileContent.getChildren().add(profileBox);
-        return userProfileContent;
+        User loggedinUser = UserDbConnection.findByUsername(user.getUsername());
+        UserProfileUI userProfileUI = new UserProfileUI(loggedinUser, password);
+        return userProfileUI;
     }
 
     private VBox createCredentialsTab() {

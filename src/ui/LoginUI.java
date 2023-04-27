@@ -70,10 +70,9 @@ public class LoginUI extends Application {
         String username = usernameField.getText();
         String password = passwordField.getText();
         User user = Login.loginDB(username, password);
-
         if (user != null) {
             // Login successful, switch to the password dashboard.
-            PasswordManagerDashboard dashboard = new PasswordManagerDashboard(user);
+            PasswordManagerDashboard dashboard = new PasswordManagerDashboard(user, password);
             try {
                 dashboard.start(new Stage());
                 ((Stage) usernameField.getScene().getWindow()).close();
@@ -98,3 +97,4 @@ public class LoginUI extends Application {
         launch(args);
     }
 }
+

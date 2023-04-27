@@ -39,8 +39,53 @@ public class CredentialsDB {
             return false;
         }
     }
+    public boolean updateCredential(User user, int credentialId, String websiteUrl, String websiteName, String username, String email, String password) {
+        String query = "UPDATE CREDENTIALS SET websiteurl = ?, websitename = ?, username = ?, email = ?, password = ? WHERE user_id = ? AND id = ?";
 
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
 
+            // Encrypt the updated credentials before saving
+            SecretKeySpec secretKeySpec = SecretKey.createSecretKeySpec(password, user.getSalt());
+            String encryptedUsername = Encrypt.encryptData(username, secretKeySpec);
+            String encryptedEmail = Encrypt.encryptData(email, secretKeySpec);
+            String encryptedPassword = Encrypt.encryptData(password, secretKeySpec);
 
-    // Add methods for updating, deleting, and retrieving credentials here
+            statement.setString(1, websiteUrl);
+            statement.setString(2, websiteName);
+            statement.setString(3, encryptedUsername);
+            statement.setString(4, encryptedEmail);
+            statement.setString(5, encryptedPassword);
+            statement.setInt(6, user.getId());
+            statement.setInt(7, credentialId);
+
+            int rowsAffected = statement.executeUpdate();
+
+            return rowsAffected > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean deleteCredential(User user, int credentialId) {
+        String query = "DELETE FROM CREDENTIALS WHERE user_id = ? AND id = ?";
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setInt(1, user.getId());
+            statement.setInt(2, credentialId);
+
+            int rowsAffected = statement.executeUpdate();
+
+            return rowsAffected > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 }

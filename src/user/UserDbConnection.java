@@ -59,12 +59,7 @@ public class UserDbConnection {
         return null; // Authentication failed
     }
 
-    public boolean updatePassword(User user) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter your new password:");
-        String newPassword = sc.next();
-        System.out.println("Confirm your new password:");
-        String confirmPassword = sc.next();
+    public boolean updatePassword(User user, String newPassword, String confirmPassword) {
 
         if (!newPassword.equals(confirmPassword)) {
             System.out.println("Passwords do not match. Please try again.");
@@ -104,4 +99,50 @@ public class UserDbConnection {
             throw new RuntimeException("Error updating password", e);
         }
     }
+    //Method to update email
+    public boolean updateEmail(User user, String newEmail) {
+        String query = "UPDATE USERS SET email=? WHERE username=?";
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement statement = conn.prepareStatement(query)) {
+
+            statement.setString(1, newEmail);
+            statement.setString(2, user.getUsername());
+
+            int affectedRows = statement.executeUpdate();
+
+            if (affectedRows > 0) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error updating email", e);
+        }
+    }
+    public boolean updatePhoneNumber(User user, String newPhoneNumber) {
+        String query = "UPDATE USERS SET phonenumber=? WHERE username=?";
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement statement = conn.prepareStatement(query)) {
+
+            statement.setString(1, newPhoneNumber);
+            statement.setString(2, user.getUsername());
+
+            int affectedRows = statement.executeUpdate();
+
+            if (affectedRows > 0) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Error updating phone number: " + e.getMessage());
+            return false;
+
+        }
+    }
+
 }

@@ -15,6 +15,7 @@ public class User {
     public User (){
 
     }
+
     public User(int user_id , String username, String password, String email, String phoneNumber,byte[] salt) {
         this.user_id = user_id;
         this.username = username;

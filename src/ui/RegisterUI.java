@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import user.Login;
 import user.Register;
+import user.User;
 
 public class RegisterUI extends Application {
 
@@ -84,13 +85,21 @@ public class RegisterUI extends Application {
     private void handleLogin() {
         String username = usernameField.getText();
         String password = passwordField.getText();
-        if (Login.loginDB(username, password) != null) {
+        User user = Login.loginDB(username, password);
+        if (user != null) {
             // Login successful, switch to the password dashboard.
-            // TODO: Implement the password dashboard.
+            PasswordManagerDashboard dashboard = new PasswordManagerDashboard(user, password);
+            try {
+                dashboard.start(new Stage());
+                ((Stage) usernameField.getScene().getWindow()).close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         } else {
             statusLabel.setText("Login failed. Please check your credentials.");
         }
     }
+
 
     private void handleRegister() {
         String username = usernameField.getText();
