@@ -15,7 +15,7 @@ public class TestEncryptionDecryption {
         UserDbConnection userDbConnection = new UserDbConnection();
 
         // You can change this to the desired username for testing
-        String username = "yasufake1";
+        String username = "newbie";
 
         // Retrieve the user by username from the database
         User user = userDbConnection.findByUsername(username);
@@ -26,7 +26,7 @@ public class TestEncryptionDecryption {
         }
 
         // Password used for testing
-        String password = "test123";
+        String password = "newbie";
 
         // Use the user's salt and provided password to generate the secret key
         byte[] salt = user.getSalt();

@@ -68,12 +68,14 @@ public class PasswordManagerDashboard extends Application {
 
     private VBox createUserProfileTab() {
         User loggedinUser = UserDbConnection.findByUsername(user.getUsername());
-        UserProfileUI userProfileUI = new UserProfileUI(loggedinUser, password);
+        UserProfileUI userProfileUI = new UserProfileUI(loggedinUser, this.password);
         return userProfileUI;
     }
 
     private VBox createCredentialsTab() {
+        System.out.println("CREATECREDENTIALSTAB PASSWORD " + this.password);
         User loggedinUser = UserDbConnection.findByUsername(user.getUsername());
+        LoginUI loginUI = new LoginUI();
         CredentialsUI credentialsUI = new CredentialsUI(loggedinUser, password);
         return credentialsUI;
     }
