@@ -2,6 +2,7 @@ package user;
 
 import AES.Encrypt;
 import AES.SecretKey;
+import AES.SecurePwdStorage;
 import database.DatabaseConnection;
 
 import javax.crypto.spec.SecretKeySpec;
@@ -41,7 +42,7 @@ public class UserDbConnection {
     }
     public static User authenticateUser(String username, String password) {
         User user = findByUsername(username);
-
+        SecurePwdStorage securePwdStorage = new SecurePwdStorage();
         if (user != null) {
             // Generate a SecretKeySpec object using the user's salt and the provided password
             SecretKeySpec secretKeySpec = SecretKey.createSecretKeySpec(password, user.getSalt());
@@ -51,6 +52,7 @@ public class UserDbConnection {
 
             // Compare the encrypted password with the one stored in the database
             if (user.getPassword().equals(encryptedPassword)) {
+                securePwdStorage.storePassword(password);
                 return user; // Authentication successful
             }
         }
@@ -156,6 +158,5 @@ public class UserDbConnection {
 
         }
     }
-
 
 }

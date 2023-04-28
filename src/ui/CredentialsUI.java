@@ -21,9 +21,11 @@ public class CredentialsUI extends VBox {
     private String password;
     private CredentialsDB credentialsDB;
     private String plainpwd;
-    public CredentialsUI(){
+
+    public CredentialsUI() {
 
     }
+
     public CredentialsUI(User user, String password) {
         this.user = user;
         this.password = password;
@@ -48,7 +50,7 @@ public class CredentialsUI extends VBox {
         tabPane.getTabs().addAll(addCredentialsTab, viewCredentialsTab, editCredentialsTab);
 
         tabPane.getSelectionModel().selectedItemProperty().addListener((ov, oldTab, newTab) -> {
-            if (newTab == viewCredentialsTab || newTab == editCredentialsTab ) {
+            if (newTab == viewCredentialsTab || newTab == editCredentialsTab) {
                 // Prompt for the user's password
                 Dialog<String> dialog = new Dialog<>();
                 dialog.setTitle("Password Verification");
@@ -78,7 +80,7 @@ public class CredentialsUI extends VBox {
                 Optional<String> result = dialog.showAndWait();
                 // Check the entered password
                 result.ifPresent(enteredPassword -> {
-                    if (UserDbConnection.authenticateUser(user.getUsername(), enteredPassword)!=null) {
+                    if (UserDbConnection.authenticateUser(user.getUsername(), enteredPassword) != null) {
                         plainpwd = enteredPassword;
                         if (newTab == viewCredentialsTab) {
                             viewCredentialsTab.setContent(createViewCredentials());
@@ -169,6 +171,7 @@ public class CredentialsUI extends VBox {
         layout.getChildren().addAll(tableView, editButton);
         return layout;
     }
+
     public Node credentialsForm(User user, Credentials credentials) {
         GridPane gridPane = new GridPane();
         gridPane.setHgap(10);
@@ -219,7 +222,7 @@ public class CredentialsUI extends VBox {
             // Call the addCredential method from the CredentialsDB class
             CredentialsDB credentialsDB = new CredentialsDB();
             // Pass the plainPassword to the addCredential method
-            boolean success = credentialsDB.addCredential(user, user.getId(), websiteUrl, websiteName, username, email, password, plainpwd);
+            boolean success = credentialsDB.addCredential(user, user.getId(), websiteUrl, websiteName, username, email, password);
 
             // Refresh the list of credentials
             // TODO: Implement the logic to refresh the list of credentials
@@ -230,17 +233,14 @@ public class CredentialsUI extends VBox {
         formLayout.getChildren().addAll(gridPane, addButton);
         return formLayout;
     }
+
     private ObservableList<Credentials> loadCredentials() {
-        System.out.println("CredentialsUI.loadCredentials plainpwd = " + plainpwd);
         // Retrieve the list of Credentials from the database using the CredentialsDB class
-        List<Credentials> credentialsList = credentialsDB.getAllCredentialsForUser(user, plainpwd);
+        List<Credentials> credentialsList = credentialsDB.getAllCredentialsForUser(user);
 
         // Convert the List<Credentials> to an ObservableList<Credentials>
         ObservableList<Credentials> credentialsObservableList = FXCollections.observableArrayList(credentialsList);
 
         return credentialsObservableList;
-    }
-    public String getPlainPwd() {
-        return plainpwd;
     }
 }
