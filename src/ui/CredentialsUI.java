@@ -48,7 +48,7 @@ public class CredentialsUI extends VBox {
         tabPane.getTabs().addAll(addCredentialsTab, viewCredentialsTab, editCredentialsTab);
 
         tabPane.getSelectionModel().selectedItemProperty().addListener((ov, oldTab, newTab) -> {
-            if (newTab == viewCredentialsTab || newTab == editCredentialsTab ) {
+            if (newTab == viewCredentialsTab || newTab == editCredentialsTab || newTab == addCredentialsTab ) {
                 // Prompt for the user's password
                 Dialog<String> dialog = new Dialog<>();
                 dialog.setTitle("Password Verification");

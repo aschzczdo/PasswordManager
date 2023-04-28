@@ -6,12 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d025baa9-f528-4852-8703-cd9f5c846667" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Credentials/Credentials.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Credentials/Credentials.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Credentials/CredentialsDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Credentials/CredentialsDB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/CredentialsUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/CredentialsUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/LoginUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/LoginUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/PasswordManagerDashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/PasswordManagerDashboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/TestEncryptionDecryption.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/TestEncryptionDecryption.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,6 +200,7 @@
       <workItem from="1682676618564" duration="18000" />
       <workItem from="1682676958130" duration="415000" />
       <workItem from="1682677670025" duration="14729000" />
+      <workItem from="1682693808633" duration="486000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <created>1678889492167</created>
