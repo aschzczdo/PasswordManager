@@ -1,5 +1,9 @@
 package Credentials;
 
+import Notes.Note;
+
+import java.util.List;
+
 public class Credentials {
     private int cred_id;
     private int user_id;
@@ -8,8 +12,12 @@ public class Credentials {
     private String username;
     private String email;
     private String password;
+    private List<Note> notes;
 
     //Constructores
+    public Credentials(){
+
+    }
     //Constructor con todos los parametros
     public Credentials(int cred_id, int user_id, String websiteUrl, String websiteName, String username, String email, String password) {
         this.cred_id = cred_id;

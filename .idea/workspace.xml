@@ -5,8 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d025baa9-f528-4852-8703-cd9f5c846667" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Notes/Note.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Notes/NoteListCell.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/NotesUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Credentials/Credentials.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Credentials/Credentials.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Credentials/CredentialsDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Credentials/CredentialsDB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resources/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/CredentialsUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/CredentialsUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/LoginUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/LoginUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/PasswordManagerDashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/PasswordManagerDashboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/UserProfileUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/UserProfileUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +27,8 @@
       <list>
         <option value="CSS File" />
         <option value="FxmlFile" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -200,7 +209,14 @@
       <workItem from="1682676618564" duration="18000" />
       <workItem from="1682676958130" duration="415000" />
       <workItem from="1682677670025" duration="15165000" />
-      <workItem from="1682694375366" duration="2019000" />
+      <workItem from="1682694375366" duration="2061000" />
+      <workItem from="1682696693776" duration="83000" />
+      <workItem from="1682696834862" duration="375000" />
+      <workItem from="1682697478217" duration="1461000" />
+      <workItem from="1682706629607" duration="4147000" />
+      <workItem from="1682856561153" duration="608000" />
+      <workItem from="1682888767173" duration="394000" />
+      <workItem from="1682970513203" duration="11327000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <created>1678889492167</created>
@@ -286,7 +302,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682695861967</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Fixed AES Error on decrypt">
+      <created>1682696436629</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1682696436629</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

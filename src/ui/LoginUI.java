@@ -93,9 +93,6 @@ public class LoginUI extends Application {
             e.printStackTrace();
         }
     }
-    public String getPassword() {
-        return passwordField.getText();
-    }
     public static void main(String[] args) {
         launch(args);
     }

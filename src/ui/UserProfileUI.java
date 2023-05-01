@@ -8,11 +8,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import user.User;
 import user.UserDbConnection;
-
 import javax.crypto.spec.SecretKeySpec;
-import java.io.File;
 import java.net.URL;
-import java.util.HashMap;
 
 public class UserProfileUI extends VBox {
     private User loggedInUser;

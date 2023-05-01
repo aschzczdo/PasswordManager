@@ -12,7 +12,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import user.User;
 import user.UserDbConnection;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -20,16 +19,19 @@ public class CredentialsUI extends VBox {
     private User user;
     private String password;
     private CredentialsDB credentialsDB;
-    private String plainpwd;
+    private PasswordManagerDashboard passwordManagerDashboard;
+    private TableView<Credentials> credentialsTableView;
+
 
     public CredentialsUI() {
 
     }
 
-    public CredentialsUI(User user, String password) {
+    public CredentialsUI(User user, PasswordManagerDashboard passwordManagerDashboard) {
         this.user = user;
-        this.password = password;
         this.credentialsDB = new CredentialsDB();
+        this.passwordManagerDashboard = passwordManagerDashboard;
+
         setSpacing(10);
         setPadding(new Insets(15, 15, 15, 15));
 
@@ -81,7 +83,6 @@ public class CredentialsUI extends VBox {
                 // Check the entered password
                 result.ifPresent(enteredPassword -> {
                     if (UserDbConnection.authenticateUser(user.getUsername(), enteredPassword) != null) {
-                        plainpwd = enteredPassword;
                         if (newTab == viewCredentialsTab) {
                             viewCredentialsTab.setContent(createViewCredentials());
                         } else {
@@ -112,6 +113,44 @@ public class CredentialsUI extends VBox {
     }
 
     private Node createViewCredentials() {
+        credentialsTableView = createCredentialsTableView();
+        credentialsTableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> handleCredentialSelection());
+
+        return createCredentialsTableView();
+    }
+
+    private Node createEditCredentials() {
+        credentialsTableView = createCredentialsTableView();
+        credentialsTableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> handleCredentialSelection());
+
+        credentialsTableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> handleCredentialSelection());
+
+        Button editButton = new Button("Edit Selected Credential");
+        editButton.setOnAction(e -> {
+            // Get the selected credential
+            Credentials selectedCredential = credentialsTableView.getSelectionModel().getSelectedItem();
+
+            if (selectedCredential != null) {
+                // Display the edit form
+                Node editForm = credentialsForm(user, selectedCredential);
+                getChildren().clear();
+                getChildren().add(editForm);
+            } else {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("No Selection");
+                alert.setHeaderText("No Credential Selected");
+                alert.setContentText("Please select a credential to edit.");
+                alert.showAndWait();
+            }
+        });
+
+        VBox layout = new VBox(10);
+        layout.getChildren().addAll(credentialsTableView, editButton);
+        return layout;
+    }
+
+    // Add a new method to create a TableView for credentials
+    public TableView<Credentials>  createCredentialsTableView() {
         TableView<Credentials> tableView = new TableView<>();
         tableView.setItems(loadCredentials());
 
@@ -129,47 +168,6 @@ public class CredentialsUI extends VBox {
         tableView.getColumns().addAll(websiteUrlColumn, websiteNameColumn, usernameColumn, emailColumn, passwordColumn);
 
         return tableView;
-    }
-
-    private Node createEditCredentials() {
-        TableView<Credentials> tableView = new TableView<>();
-        tableView.setItems(loadCredentials());
-
-        TableColumn<Credentials, String> websiteUrlColumn = new TableColumn<>("Website URL");
-        websiteUrlColumn.setCellValueFactory(new PropertyValueFactory<>("websiteUrl"));
-        TableColumn<Credentials, String> websiteNameColumn = new TableColumn<>("Website Name");
-        websiteNameColumn.setCellValueFactory(new PropertyValueFactory<>("websiteName"));
-        TableColumn<Credentials, String> usernameColumn = new TableColumn<>("Username");
-        usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
-        TableColumn<Credentials, String> emailColumn = new TableColumn<>("Email");
-        emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
-        TableColumn<Credentials, String> passwordColumn = new TableColumn<>("Password");
-        passwordColumn.setCellValueFactory(new PropertyValueFactory<>("password"));
-
-        tableView.getColumns().addAll(websiteUrlColumn, websiteNameColumn, usernameColumn, emailColumn, passwordColumn);
-
-        Button editButton = new Button("Edit Selected Credential");
-        editButton.setOnAction(e -> {
-            // Get the selected credential
-            Credentials selectedCredential = tableView.getSelectionModel().getSelectedItem();
-
-            if (selectedCredential != null) {
-                // Display the edit form
-                Node editForm = credentialsForm(user, selectedCredential);
-                getChildren().clear();
-                getChildren().add(editForm);
-            } else {
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("No Selection");
-                alert.setHeaderText("No Credential Selected");
-                alert.setContentText("Please select a credential to edit.");
-                alert.showAndWait();
-            }
-        });
-
-        VBox layout = new VBox(10);
-        layout.getChildren().addAll(tableView, editButton);
-        return layout;
     }
 
     public Node credentialsForm(User user, Credentials credentials) {
@@ -243,4 +241,38 @@ public class CredentialsUI extends VBox {
 
         return credentialsObservableList;
     }
+    private Credentials getSelectedCredential(TableView<Credentials> tableView) {
+        return tableView.getSelectionModel().getSelectedItem();
+    }
+
+    private void handleCredentialSelection() {
+        Credentials selectedCredential = getSelectedCredential(createCredentialsTableView());
+        if (selectedCredential != null) {
+            // Call the createNotesTab method in the PasswordManagerDashboard class
+            VBox notesUI = passwordManagerDashboard.createNotesTab(selectedCredential);
+
+            // Set the content of the notesTab in the PasswordManagerDashboard class
+            passwordManagerDashboard.getNotesTab().setContent(notesUI);
+            createCredentialsTableView().getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> handleCredentialSelection());
+        }
+        NotesUI notesUI = new NotesUI(user, selectedCredential, passwordManagerDashboard);
+        passwordManagerDashboard.getNotesTab().setContent(notesUI);
+    }
+    private TableCell<Credentials, String> createCensoredTableCell() {
+        return new TableCell<>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+
+                if (empty || item == null) {
+                    setText(null);
+                    setGraphic(null);
+                } else {
+                    setText(item.replaceAll(".", "*"));
+                }
+            }
+        };
+    }
+
+
 }
