@@ -114,7 +114,22 @@ public class PasswordManagerDashboard extends Application {
     }
     private VBox createContactTab() {
         VBox contactContent = new VBox();
-        // TODO: Add content for the Contact tab
+        contactContent.setSpacing(10);
+        contactContent.setAlignment(Pos.CENTER);
+
+        Label contactHeader = new Label("Información de contacto");
+        contactHeader.setStyle("-fx-font-size: 24; -fx-font-weight: bold;");
+
+        Label emailLabel = new Label("Email:");
+        emailLabel.setStyle("-fx-font-size: 18;");
+
+        Label emailValue = new Label("asanchez.czdo@gmail.com");
+        emailValue.setStyle("-fx-font-size: 16; -fx-font-weight: bold;");
+
+        // Add other information labels and values here
+
+        contactContent.getChildren().addAll(contactHeader, emailLabel, emailValue);
+
         return contactContent;
     }
 

@@ -1,7 +1,7 @@
 package Notes;
 
 import javafx.scene.control.ListCell;
-import Notes.Note;
+
 
 public class    NoteListCell extends ListCell<Note> {
     @Override

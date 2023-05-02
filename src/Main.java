@@ -1,8 +1,3 @@
-import AES.Decrypt;
-import AES.Encrypt;
-import AES.SecretKey;
-
-import javax.crypto.spec.SecretKeySpec;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URI;

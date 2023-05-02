@@ -10,11 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d025baa9-f528-4852-8703-cd9f5c846667" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/PasswordManager_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AES/Encrypt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AES/Encrypt.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/TestEncryptionDecryption.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Notes/Note.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Notes/Note.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Notes/NoteListCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Notes/NoteListCell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/CredentialsUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/CredentialsUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/PasswordManagerDashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/PasswordManagerDashboard.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,7 +219,7 @@
       <workItem from="1682987484443" duration="92000" />
       <workItem from="1682987759518" duration="2595000" />
       <workItem from="1683023439535" duration="15082000" />
-      <workItem from="1683042060390" duration="5596000" />
+      <workItem from="1683042060390" duration="6210000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <created>1678889492167</created>
@@ -324,7 +326,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683039056150</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Release 0.0.1">
+      <created>1683053013862</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1683053013862</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

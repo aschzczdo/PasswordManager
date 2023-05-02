@@ -62,11 +62,11 @@ public class CredentialsUI extends VBox {
                 PasswordField passwordField = new PasswordField();
                 dialog.getDialogPane().setContent(passwordField);
 
-                // Add OK and Cancel buttons
+                // Add button
                 ButtonType okButtonType = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
                 dialog.getDialogPane().getButtonTypes().addAll(okButtonType, ButtonType.CANCEL);
 
-                // Set the OK button as the default
+                // Default = Ok button
                 Node okButton = dialog.getDialogPane().lookupButton(okButtonType);
                 okButton.requestFocus();
 
@@ -78,7 +78,7 @@ public class CredentialsUI extends VBox {
                     return null;
                 });
 
-                // Show the dialog and wait for the result
+                // Show dialog
                 Optional<String> result = dialog.showAndWait();
                 // Check the entered password
                 result.ifPresent(enteredPassword -> {
@@ -149,7 +149,7 @@ public class CredentialsUI extends VBox {
         return layout;
     }
 
-    // Add a new method to create a TableView for credentials
+    // Method to create a TableView for credentials
     public TableView<Credentials>  createCredentialsTableView() {
         TableView<Credentials> tableView = new TableView<>();
         tableView.setItems(loadCredentials());
@@ -217,13 +217,10 @@ public class CredentialsUI extends VBox {
             String email = emailField.getText();
             String password = passwordField.getText();
 
-            // Call the addCredential method from the CredentialsDB class
+            // Call the addCredential method
             CredentialsDB credentialsDB = new CredentialsDB();
-            // Pass the plainPassword to the addCredential method
             boolean success = credentialsDB.addCredential(user, user.getId(), websiteUrl, websiteName, username, email, password);
 
-            // Refresh the list of credentials
-            // TODO: Implement the logic to refresh the list of credentials
         });
 
 
