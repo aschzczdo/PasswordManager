@@ -69,7 +69,7 @@ public class UserDbConnection {
 
         // Generate a new salt for the user
         byte[] newSalt = SecretKey.generateSalt();
-
+        SecurePwdStorage.storePassword(newPassword);
         // Encrypt the new password using the new salt
         SecretKeySpec secretKeySpec = SecretKey.createSecretKeySpec(newPassword, newSalt);
         String encryptedNewPassword = Encrypt.encryptData(newPassword, secretKeySpec);

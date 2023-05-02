@@ -100,7 +100,6 @@ public class RegisterUI extends Application {
         }
     }
 
-
     private void handleRegister() {
         String username = usernameField.getText();
         String password = passwordField.getText();

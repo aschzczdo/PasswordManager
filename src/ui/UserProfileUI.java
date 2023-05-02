@@ -2,6 +2,7 @@ package ui;
 
 import AES.Decrypt;
 import AES.SecretKey;
+import AES.SecurePwdStorage;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
@@ -13,11 +14,9 @@ import java.net.URL;
 
 public class UserProfileUI extends VBox {
     private User loggedInUser;
-    private String plainpassword;
 
-    public UserProfileUI(User loggedInUser, String plainpassword) {
+    public UserProfileUI(User loggedInUser) {
         this.loggedInUser = loggedInUser;
-        this.plainpassword = plainpassword;
         // Load the CSS file
         URL cssURL = getClass().getResource("/resources/styles.css");
         if (cssURL != null) {
@@ -44,7 +43,7 @@ public class UserProfileUI extends VBox {
         String decryptedEmail = "";
         String decryptedPhoneNumber = "";
         try {
-            SecretKeySpec secretKeySpec = SecretKey.createSecretKeySpec(plainpassword, loggedInUser.getSalt());
+            SecretKeySpec secretKeySpec = SecretKey.createSecretKeySpec(SecurePwdStorage.retrievePassword(), loggedInUser.getSalt());
             decryptedEmail = Decrypt.decryptData(loggedInUser.getEmail(), secretKeySpec);
             decryptedPhoneNumber = Decrypt.decryptData(loggedInUser.getPhoneNumber(), secretKeySpec);
         } catch (Exception e) {

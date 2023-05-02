@@ -1,5 +1,6 @@
 package ui;
 
+import AES.SecurePwdStorage;
 import Credentials.Credentials;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -85,7 +86,7 @@ public class PasswordManagerDashboard extends Application {
 
     private VBox createUserProfileTab() {
         User loggedinUser = UserDbConnection.findByUsername(user.getUsername());
-        UserProfileUI userProfileUI = new UserProfileUI(loggedinUser, this.password);
+        UserProfileUI userProfileUI = new UserProfileUI(loggedinUser);
         return userProfileUI;
     }
 
@@ -96,12 +97,12 @@ public class PasswordManagerDashboard extends Application {
     }
     VBox createNotesTab(Credentials selectedCredential) {
         if (selectedCredential == null) {
-            return new VBox(createCredentialsTableViewForNotesTab());
+            return new VBox(createNotesView());
         }
         NotesUI notesUI = new NotesUI(user, selectedCredential, this);
         return notesUI;
     }
-    private TableView<Credentials> createCredentialsTableViewForNotesTab() {
+    private TableView<Credentials> createNotesView() {
         TableView<Credentials> tableView = credentialsUI.createCredentialsTableView();
         tableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
@@ -116,22 +117,22 @@ public class PasswordManagerDashboard extends Application {
         // TODO: Add content for the Contact tab
         return contactContent;
     }
-    private void showError(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText(message);
-        alert.showAndWait();
-    }
+
     public Tab getNotesTab() {
+
         return notesTab;
     }
 
-    public Tab getCredentialsTab() {
-        return credentialsTab;
+    public Tab getCredentialsTab(){
+
+    return credentialsTab;
     }
+
     public TabPane getTabPane() {
+
         return this.tabPane;
     }
+
     public void showNotesForCredential(Credentials selectedCredential) {
         VBox notesUI = createNotesTab(selectedCredential);
         notesTab.setContent(notesUI);

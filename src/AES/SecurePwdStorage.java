@@ -15,7 +15,7 @@ public class SecurePwdStorage {
     static {
         try {
             keyStore = KeyStore.getInstance("JCEKS");
-            keyStore.load(null, null); // Create an empty KeyStore
+            keyStore.load(null, null);
         } catch (KeyStoreException | IOException | NoSuchAlgorithmException | CertificateException e) {
             throw new RuntimeException("Error initializing KeyStore", e);
         }

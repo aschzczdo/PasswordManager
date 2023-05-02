@@ -258,21 +258,5 @@ public class CredentialsUI extends VBox {
         NotesUI notesUI = new NotesUI(user, selectedCredential, passwordManagerDashboard);
         passwordManagerDashboard.getNotesTab().setContent(notesUI);
     }
-    private TableCell<Credentials, String> createCensoredTableCell() {
-        return new TableCell<>() {
-            @Override
-            protected void updateItem(String item, boolean empty) {
-                super.updateItem(item, empty);
-
-                if (empty || item == null) {
-                    setText(null);
-                    setGraphic(null);
-                } else {
-                    setText(item.replaceAll(".", "*"));
-                }
-            }
-        };
-    }
-
 
 }
